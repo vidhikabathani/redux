@@ -1,15 +1,25 @@
-import { Add, Remove } from "./ActionType";
+import { ADD_TASK, REMOVE_TASK, TOGGLE_TASK } from "./ActionType";
 
-export const Reducer = (state = 0, action) => {
-    switch (action.type) {
-        case Add:
-            return state + 1
-            break;
-        case Remove:
-            return state - 1
-            break;
-        default:
-            return state
-            break;
+let initial = {
+    todo: []
+}
+
+export const Reducer = (state = initial, { type, payload }) => {
+    switch (type) {
+        case ADD_TASK:
+            return {
+                ...state,
+                todo: [...state.todo, payload]
+            }
+        case REMOVE_TASK:
+            return {
+                ...state,
+                todo: state.todo.filter((todo) => todo.id != payload)
+            }
+        case TOGGLE_TASK:
+            return{
+                ...state,
+                todo:state.todo.map((todo)=>todo.id==payload? {...todo,isCompleted: ! (todo.isCompleted)} : todo)
+            }
     }
 }
