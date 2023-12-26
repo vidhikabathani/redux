@@ -5,12 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { Store } from './redux/Store';
 import AddTask from './components/AddTask';
+import ToDo from './components/ToDo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
     <React.StrictMode>
       <AddTask/>
+      <ToDo/>
     </React.StrictMode>
   </Provider>
 );

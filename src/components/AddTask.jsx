@@ -9,19 +9,19 @@ function AddTask() {
     let handleSubmit=(e)=>{
         e.preventDefault();
 
-        let todos={
+        let todo={
             id:Date.now(),
             task:task,
             isCompleted:false
         }
-        dispatch(addtask(todos))
+        dispatch(addtask(todo))
         setTask("")
     }
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Enter Your Task' key={task} onChange={(e)=>setTask(e.target.value)}/>
-                <input type="button" value="Add Task" />
+            <form>
+                <input type="text" placeholder='Enter Your Task' value={task} onChange={(e)=>setTask(e.target.value)}/>
+                <input type="button" value="Add Task" onClick={handleSubmit} />
             </form>
         </div>
     )
